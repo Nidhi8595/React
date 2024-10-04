@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is Learning React",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nidhi8595/React.git"
+  },
+  "keywords": [
+    "react",
+    "Nidhi"
+  ],
+  "author": "Neelakshi",
+  "license": "ISC",
+  "bugs":{
+    "url": "https://github.com/Nidhi8595/React#readme"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}

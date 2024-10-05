@@ -14,6 +14,7 @@
 }
 
 .header {
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -23,7 +24,8 @@
 }
 
 .logo {
-    width: 100px;
+    width: 120px;
+    height: 80px;
     cursor: pointer;
 }
 
@@ -34,12 +36,23 @@
 }
 
 .nav-items>ul>li {
+    font-family: monstrett;
     cursor: pointer;
     padding: 10px;
     margin: 10px;
+
+    transform: ease all 1s;
+
+}
+
+.nav-items>ul>li:hover {
+    color: orangered;
+    transform: scale(1.05);
+    font-weight: 600;
 }
 
 .search-container {
+    height: 50px;
     display: flex;
     justify-content: center;
     margin: 50px 0;
@@ -48,7 +61,11 @@
 
 .search-container input {
     min-width: 250px;
-    padding: 10px;
+    border-radius: 10px;
+    width: 70%;
+    padding: 7px;
+    font-size: 17px;
+
 }
 
 .search-container input:focus {
@@ -56,8 +73,20 @@
 }
 
 .search-container button {
-    padding: 10px 15px;
+    width: 100px;
+    padding: 10px 12px;
     cursor: pointer;
+    border: 1px solid darkgray;
+    border-radius: 15px;
+    font-size: 19px;
+    color: white;
+    background-color: gray;
+}
+
+.search-container button:hover {
+    transform: scaleY(1.1);
+    background-color: orangered;
+    border: 1px solid transparent;
 }
 
 .res-container {
@@ -70,8 +99,8 @@
 
 .res-card {
     border-radius: 20px;
-    width: 350px;
-    height: 200px;
+    width: 270px;
+    height: 300px;
     overflow: hidden;
     /* padding: 5px; */
     border: 1px solid transparent;
@@ -95,15 +124,10 @@
     border-radius: 10px;
     width: 100%;
     height: 50%;
-
-}
-
-.res-logo img {
     object-fit: cover;
     object-position: center;
-    width: 350px;
-    height: 100px;
-    /* height:100%; */
+    overflow: hidden;
+
 }
 
 .footer {

@@ -5,7 +5,8 @@ const Header = () => {
     return (
         <div className="header">
             <div className="logo-container">
-                <img className="logo" src="https://www.canva.com/design/DAGSsC-RlxI/I7W4z-Bdfa7nfRZxUWDvKg/view?utm_content=DAGSsC-RlxI&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel" alt="Logo" />
+                <img className="logo" src="https://imgs.search.brave.com/tu0c6MF6BUOeFB3gtk6a9miKo88wMYHtb-Q4OYCOY78/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAzLzEwLzk2Lzc2/LzM2MF9GXzMxMDk2/NzY2Nl9VUVFYUzFU/dHM5d2FrM2hKa2VM/Q2d3WllJYkNCSzZU/Zi5qcGc" alt="Logo" />
+
 
             </div>
 
@@ -21,10 +22,41 @@ const Header = () => {
     );
 };
 
+// const styleCard={
+//     backgroundColor:"#f0f0f0",
+// };
+
+const ResCard = () => {
+    return (
+        <div className="res-card" style={{ backgroundColor: "#f0f0f0", }}>
+            <div className="res-logo"></div>
+            <h3>Burger King</h3>
+            <h4></h4>
+
+        </div>
+    )
+}
+
+const Body = () => {
+    return (
+        <div className="body">
+            <div className="search-container">
+                <input type="text" placeholder="Search Food or Restaurant" />
+                <button>Search</button>
+            </div>
+
+            <div className="res-container">
+                <ResCard />
+            </div>
+        </div>
+    )
+}
+
 const AppLayout = () => {
     return (
         <div className="app">
             <Header />
+            <Body />
         </div>
     )
 }

@@ -95,9 +95,14 @@
     border-radius: 10px;
     width: 100%;
     height: 50%;
-    background-image: url('https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/8/9/1bd99faa-92f1-4a01-9e07-b53dbe4a156c_42146.jpg');
-    background-size: contain;
-    background-position: center;
+
+}
+
+.res-logo img{
+    object-fit: cover;
+    object-position: center;
+    width:100%;
+    height:100%;
 }
 
 .footer {

@@ -29,7 +29,9 @@ const Header = () => {
 const ResCard = () => {
     return (
         <div className="res-card" style={{ backgroundColor: "#f0f0f0", }}>
-            <div className="res-logo"></div>
+            <div className="res-logo">
+                <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/8/9/1bd99faa-92f1-4a01-9e07-b53dbe4a156c_42146.jpg"/>
+            </div>
             <h3>Burger King</h3>
             <h4></h4>
 

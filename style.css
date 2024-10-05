@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 1px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    align-items: center;
+    height: 7vw;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+}
+
+.nav-items>ul {
+    display: flex;
+    padding: 0px 20px;
+    list-style-type: none;
+
+    font-size: 24px;
+}
+
+.nav-items>ul>li {
+    padding: 10px;
+    margin: 10px;
+}

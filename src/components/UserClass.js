@@ -56,20 +56,20 @@ class UserClass extends React.Component {
         </button> */}
 
     return (
-      <div className="user-card">
-        <img src={avatar_url} alt={name} />
-        <h2>{name}</h2>
-        <h3>{location}</h3>
-        <div class="contactCard">
-          <b>Contact : </b>
+      <div className="user-card p-2.5 bg-white mb-8 mx-auto h-96 w-2/5 text-center">
+        <img className="p-0.5 mb-4 my-2 w-40 h-40  rounded-full"src={avatar_url} alt={name} />
+        <h2 className='text-2xl mt-2.5'>{name}</h2>
+        <h3 className='mt-2.5 opacity-70 text-lg'>{location}</h3>
+        <div className="contactCard flex justify-center align-middle gap-2 text-base opacity-70 p-0.5">
+          <b className='mt-9 p-1'>Contact :- </b>
           <div>
-            <a href="mailto:neelakshikadyan@gmail.com"> <MdMail /></a>
+            <a className='p-1 text-3xl' href="mailto:neelakshikadyan@gmail.com"> <MdMail /></a>
             {/* {email} */}
           </div>
 
           <div>
 
-            <a href=" https://www.linkedin.com/in/neelakshi-2b3725321/"><FaLinkedin /></a>
+            <a  className='p-1 text-3xl' href=" https://www.linkedin.com/in/neelakshi-2b3725321/"><FaLinkedin /></a>
           </div>
         </div>
       </div>

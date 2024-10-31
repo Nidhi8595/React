@@ -56,12 +56,9 @@ const ShimmerMenu = () => {
               <img src="" alt="" className="stroke animate" />
             </div>
           </div>
-
-          {/* <li>{itemCards[0].card.info.name}</li>
-        <li>{itemCards[1].card.info.name}</li>
-        <li>{itemCards[2].card.info.name}</li> */}
         </div>
       </div>
+
     </div>
   );
 };

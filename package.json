@@ -1,25 +1,23 @@
 {
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.14"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.27.0"
+  },
   "name": "react",
   "version": "1.0.0",
-  "description": "- Dev Build\r - Local Server (Hosting)\r - HMR = Hot Module Replacement\r - File Watching Algorithm - written in C++\r - Faster Builds (Caching)\r - Image Optimization\r - Minification\r - Bundling\r - Compressing\r - Consistent Hashing\r - Code Splitting\r - Differential Bundling - support older browsers\r - Diagonistic\r - Error Handling\r - HTTPs\r - Tree Shaking - remove unused code\r - Different dev and prod bundles",
-  "main": "App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel build index.html"
+    "build":"pacrel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "parcel": "^2.12.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-fontawesome": "^1.7.1",
-    "react-icons": "^5.3.0",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-router-dom": "^6.27.0"
-  },
-  "devDependencies": {
-    "process": "^0.11.10"
-  }
+  "description": ""
 }

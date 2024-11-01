@@ -47,7 +47,7 @@ const Body = () => {
         <Shimmer />
     ) : (
         <div className="body">
-            <div className="filter flex justify-between align-middle h-16 gap-2 mt-3.5 mb-7 w-full pr-10 bg-orange-100 rounded-lg shadow-lg shadow-slate-700">
+            <div className="filter flex justify-between align-middle h-16 gap-2 mt-3.5 mb-7 w-full pr-10 bg-orange-100 rounded-lg shadow-lg shadow-slate-300">
                 <div className="search flex justify-start p-2.5 w-3/4 ml-6">
                     <div className='flex border-2 border-solid border-gray-500 rounded-xl w-2/5 bg-gray-200'>
                     <input

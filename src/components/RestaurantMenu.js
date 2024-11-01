@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-// import Shimmer from './Shimmer';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
 import ShimmerMenu from './ShimmerMenu';
 import { CDN_URL } from '../utils/constants';
 import { FiClock } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
+// import { useState } from 'react';
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -62,16 +62,31 @@ const RestaurantMenu = () => {
       </header>
 
       <div className="menu-main mx-24 my-12">
-        <h2 className="text-2xl w-1/2 opacity-8 scale-150 ml-48">Menu</h2>
+        <h2 className="text-2xl w-1/2 opacity-8 scale-150 ml-48 ">Menu</h2>
 
         <h3 className="items ml-12 mt-2 text-base opacity-80"><b>{itemCardCount}</b> ITEMS</h3>
         <div className="menu-main-card-container mt-3 rounded-sm pt-1 mb-1">
           {itemCardCount > 0 ? (
 
             itemCards.map((item) => (
-              <div key={item.card?.info.id} className="menu-card flex align-middle justify-between gap-12 bg-white p-5 border-b-2 border-b-solid border-b-zinc-500">
+              <div key={item.card?.info.id} className="menu-card h-auto flex align-middle justify-between gap-4 bg-white p-5 border-b-2 border-b-solid border-b-zinc-500">
                 <div className="menu-card-left w-2/3">
                   <h2 className="menu-name opacity-90 mb-1.5 text-xl font-medium">{item.card?.info.name}</h2>
+
+                  {item.card?.info.ratings?.aggregatedRating.rating ?
+                    (
+                      <div className="menu-rating mt-1 flex gap-1 p-0.5 text-green-600">{item.card?.info.ratings.
+                        aggregatedRating.rating}
+                        <div className="star mt-1"><AiOutlineStar /></div>
+
+                        <div className="count opacity-90 text-base pl-1">({item.card?.info.ratings.
+                          aggregatedRating.ratingCount})</div>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+
+
                   <h3 className="menu-price opacity-70 mt-1.5 font-normal">
                     ₹
                     {item.card?.info.price / 100 ||
@@ -81,27 +96,22 @@ const RestaurantMenu = () => {
                     {item.card?.info.description}
                   </h4>
                 </div>
-                <div className="menu-card-right ">
-                  <img  className='h-36 w-52 rounded-lg bg-cover bg-center hover:cursor-pointer hover:scale-90 overflow-hidden' src={CDN_URL + item.card?.info.imageId} alt="Menu Info" />
+                <div className="menu-card-right flex-col pb-12 ">
 
-                  {item.card?.info.ratings?.aggregatedRating.rating ?
-                    (
-                      <div class="menu-rating ml-1 mt-1 flex gap-1 p-0.5 text-green-700">{item.card?.info.ratings.
-                        aggregatedRating.rating}
-                        <div class="star mt-1"><AiOutlineStar /></div>
+                  <img className='s h-36 w-48 rounded-lg bg-cover bg-center hover:cursor-pointer hover:scale-90 overflow-hidden' src={CDN_URL + item.card?.info.imageId} alt="Menu Info" />
 
-                        <div class="count opacity-80 text-base pt-0.5 pl-1">({item.card?.info.ratings.
-                          aggregatedRating.ratingCount})</div>
-                      </div>
-                    ) : (
-                      <div></div>
-                    )}
+                  <div className='text-center -mt-7'>
+                    <div className='absolute'><button className=" p-1.5 w-28 h-10 relative left-9 rounded-xl bg-white text-xl font-bold text-green-600 shadow-lg shadow-gray-700 hover:bg-gray-200 transition-all duration-[.3s]">
+                      ADD
+                    </button></div>
+
+                  </div>
 
                 </div>
               </div>
             ))
           ) : (
-            <div class="notAvail p-5 text-amber-950 text-2xl align-middle text-center"><h3>No items available</h3></div>
+            <div className="notAvail p-5 text-amber-950 text-2xl align-middle text-center"><h3>No items available</h3></div>
           )}
 
         </div>

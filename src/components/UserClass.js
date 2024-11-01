@@ -56,8 +56,8 @@ class UserClass extends React.Component {
         </button> */}
 
     return (
-      <div className="user-card p-2.5 bg-white mb-8 mx-auto h-96 w-2/5 text-center">
-        <img className="p-0.5 mb-4 my-2 w-40 h-40  rounded-full"src={avatar_url} alt={name} />
+      <div className="user-card p-2.5 bg-white mb-8 mx-auto h-96 w-2/6 text-center">
+        <img className="p-0.5 mb-4 my-2 w-40 h-40 ml-36 rounded-full"src={avatar_url} alt={name} />
         <h2 className='text-2xl mt-2.5'>{name}</h2>
         <h3 className='mt-2.5 opacity-70 text-lg'>{location}</h3>
         <div className="contactCard flex justify-center align-middle gap-2 text-base opacity-70 p-0.5">

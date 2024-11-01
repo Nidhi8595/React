@@ -16,7 +16,7 @@ const Header = () => {
     const onlineStatus = useOnlineStatus();
 
     return (
-        <div className="flex justify-between shadow-lg shadow-slate-700 w-full bg-white">
+        <div className="flex justify-between shadow-lg shadow-slate-400 w-full bg-white">
             <div>
                 <Link to="/">
                     <img className="w-28 cursor-pointer"

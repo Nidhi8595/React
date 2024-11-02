@@ -4,6 +4,7 @@ import ShimmerMenu from './ShimmerMenu';
 import { CDN_URL } from '../utils/constants';
 import { FiClock } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
+
 import { useContext, useState } from 'react';
 import UserContext from '../utils/UserContext';
 
@@ -26,7 +27,11 @@ const RestaurantMenu = () => {
   } = resInfo?.cards[2]?.card?.card?.info;
 
   const deliveryTime = resInfo?.cards[2]?.card?.card?.info?.sla.deliveryTime;
+
   const itemCards = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards || [];
+
+  console.log(itemCards);
+
   const itemCardCount = itemCards.length;
 
   const handleItemClick = (item) => {
@@ -41,7 +46,7 @@ const RestaurantMenu = () => {
 
   return (
     <div className="menu h-full w-full">
-      
+
       <header className="menu-header w-full h-64 bg-black text-white flex align-middle justify-center gap-7 py-3.5 shadow-lg shadow-black">
         <div className="menu-header-left">
           <img className="topimage w-64 h-56 bg-cover bg-center rounded-lg" src={CDN_URL + cloudinaryImageId} alt="Restaurant Info" />
@@ -64,12 +69,20 @@ const RestaurantMenu = () => {
         </div>
       </header>
 
-      <div className='w-5/6 mx-auto flex justify-center align-middle'>
-        <div className="flex h-20 mt-3 py-5 pl-4 text-3xl text-purple-900 rounded-2xl">
-          Welcome, what would you like to have {loggedInUser}
-          <img className="pl-4 -mt-1 cover" src="https://as2.ftcdn.net/v2/jpg/09/70/93/27/1000_F_970932707_rohMcQ9hgc6RAYjPSZKqUoTM9eUAPTlr.webp" />
-        </div>
-      </div>
+
+      {
+        itemCardCount > 0 ? (
+          <div className='w-5/6 mx-auto flex justify-center align-middle'>
+            <div className="flex h-20 mt-3 py-5 pl-4 text-3xl text-purple-900 rounded-2xl">
+              Welcome, what would you like to have {loggedInUser}
+              <img className="pl-4 -mt-1 cover" src="https://as2.ftcdn.net/v2/jpg/09/70/93/27/1000_F_970932707_rohMcQ9hgc6RAYjPSZKqUoTM9eUAPTlr.webp" />
+            </div>
+          </div>
+        ) : (
+          <div className='h-3 w-full mt-6 bg-white'></div>
+        )
+      }
+
 
       <div className="menu-main mx-24 mb-12 mt-5">
         <h2 className="text-2xl w-1/2 opacity-8 scale-150 ml-[360]">Menu</h2>
@@ -78,7 +91,32 @@ const RestaurantMenu = () => {
           {itemCards.length > 0 ? (
             itemCards.map((item) => (
               <div key={item.card?.info.id} className="menu-card h-48 flex align-middle justify-between gap-4 bg-white p-5 border-b-2 border-b-solid border-b-purple-400">
-                <div className="menu-card-left w-2/3 pt-2 pl-2">
+                <div className="menu-card-left w-2/3 pt-1 pl-2">
+
+                  <div className='flex gap-2 w-full'>
+                  {item.card?.info.isVeg ?
+                    (<div className='ml-1.5 mt-2 mb-1 w-5 h-5'>
+                      <img src='https://imgs.search.brave.com/gAfTCCPaVdevos5TZHh4nLJ2i-HcPXF5WXjxJP0VbMY/rs:fit:500:0:0:0/g:ce/aHR0cDovL2Zvb2Rz/YWZldHloZWxwbGlu/ZS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTMvMDUvdmVn/LTMwMHgyNTkuanBn' />
+                    </div>) : (
+                      <div className='ml-1.5 mt-2 mb-1 w-5 h-5'>
+                        <img src='https://imgs.search.brave.com/5hWEhV97Dfh41N5BO6b3Q-Mjj3tM_KlIjYzhhlLIRd0/rs:fit:500:0:0:0/g:ce/aHR0cDovL2Zvb2Rz/YWZldHloZWxwbGlu/ZS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTMvMDUvbm9u/LXZlZy0zMDB4MjU5/LmpwZw' />
+                      </div>
+                    )}
+
+                    {
+                      item.card?.info.isBestseller?
+                      (
+                        <div>
+                          <img className='h-9 w-9 mb-1  ml-3'  src="https://cdn-icons-png.freepik.com/256/8440/8440997.png?ga=GA1.1.1651789925.1730482677&semt=ais_hybrid"/>
+                        </div>
+                      ):
+                      (
+                        <div></div>
+                      )
+                    }
+
+                  </div>
+
                   <h2 className="menu-name opacity-90 mb-1.5 text-xl font-medium">{item.card?.info.name}</h2>
                   {item.card?.info.ratings?.aggregatedRating.rating ? (
                     <div className="menu-rating mt-1 flex text-lg gap-1 p-0.5 text-purple-600">
@@ -89,7 +127,7 @@ const RestaurantMenu = () => {
                   ) : (
                     <div></div>
                   )}
-                  <h3 className="menu-price text-purple-600 mt-1.5 text-lg font-medium">
+                  <h3 className="menu-price text-purple-600 text-lg font-medium">
                     ₹{item.card?.info.price / 100 || item.card?.info.defaultPrice / 100}
                   </h3>
                 </div>
@@ -122,10 +160,31 @@ const RestaurantMenu = () => {
               src={CDN_URL + selectedItem.card?.info.imageId}
               alt="Menu Info"
             />
+            
             <div className='px-3 flex justify-between text-purple-900'>
               <div className='flex flex-col justify-between'>
+                <div className='flex mb-0.5'> 
+              {selectedItem.card?.info.isVeg ?
+                    (<div className='ml-1 w-5 h-5 pt-2 '>
+                      <img src='https://imgs.search.brave.com/gAfTCCPaVdevos5TZHh4nLJ2i-HcPXF5WXjxJP0VbMY/rs:fit:500:0:0:0/g:ce/aHR0cDovL2Zvb2Rz/YWZldHloZWxwbGlu/ZS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTMvMDUvdmVn/LTMwMHgyNTkuanBn' />
+                    </div>) : (
+                      <div className='ml-1 w-5 h-5 pt-2'>
+                        <img src='https://imgs.search.brave.com/5hWEhV97Dfh41N5BO6b3Q-Mjj3tM_KlIjYzhhlLIRd0/rs:fit:500:0:0:0/g:ce/aHR0cDovL2Zvb2Rz/YWZldHloZWxwbGlu/ZS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTMvMDUvbm9u/LXZlZy0zMDB4MjU5/LmpwZw' />
+                      </div>
+                    )}
+                    {
+                      selectedItem.card?.info.isBestseller?
+                      (
+                        <div>
+                          <img className='h-9 w-9 mb-1  ml-4'  src="https://cdn-icons-png.freepik.com/256/8440/8440997.png?ga=GA1.1.1651789925.1730482677&semt=ais_hybrid"/>
+                        </div>
+                      ):
+                      (
+                        <div></div>
+                      )
+                    }</div>
                 <h2 className="menu-name text-2xl ">{selectedItem.card?.info.name}</h2>
-                <h3 className="menu-price opacity-80 mt-0.5 font-semibold text-lg">
+                <h3 className="menu-price opacity-80 mt-0.5 font-semibold text-lg ml-1">
                   ₹{selectedItem.card?.info.price / 100 || selectedItem.card?.info.defaultPrice / 100}
                 </h3>
               </div>

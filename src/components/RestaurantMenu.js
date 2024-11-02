@@ -4,12 +4,18 @@ import ShimmerMenu from './ShimmerMenu';
 import { CDN_URL } from '../utils/constants';
 import { FiClock } from 'react-icons/fi';
 import { AiOutlineStar } from 'react-icons/ai';
-// import { useState } from 'react';
+import { useContext } from 'react';
+
+import UserContext from '../utils/UserContext';
+
+// import CardDetailed from './CardDetailed';
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const resInfo = useRestaurantMenu(resId);
+
+  const { loggedInUser } = useContext(UserContext);
 
   if (resInfo === null) return <ShimmerMenu />;
 
@@ -60,8 +66,15 @@ const RestaurantMenu = () => {
           </div>
         </div>
       </header>
+      <div className=' w-full ml-28 flex justify-start align-middle'>
+        <div className='text-center flex w-3/5 h-20 mt-3 py-5 pl-4 text-3xl text-purple-900 rounded-2xl'>
+          Welcome, what would you like to have {loggedInUser} <img className=" pl-4 -mt-1 cover"src="https://as2.ftcdn.net/v2/jpg/09/70/93/27/1000_F_970932707_rohMcQ9hgc6RAYjPSZKqUoTM9eUAPTlr.webp" />
+        </div>
+        
+      </div>
 
-      <div className="menu-main mx-24 my-12">
+
+      <div className="menu-main mx-24 mb-12 mt-5">
         <h2 className="text-2xl w-1/2 opacity-8 scale-150 ml-48 ">Menu</h2>
 
         <h3 className="items ml-12 mt-2 text-base opacity-80"><b>{itemCardCount}</b> ITEMS</h3>
@@ -69,13 +82,13 @@ const RestaurantMenu = () => {
           {itemCardCount > 0 ? (
 
             itemCards.map((item) => (
-              <div key={item.card?.info.id} className="menu-card h-auto flex align-middle justify-between gap-4 bg-white p-5 border-b-2 border-b-solid border-b-zinc-500">
+              <div key={item.card?.info.id} className="menu-card h-auto flex align-middle justify-between gap-4 bg-white p-5 border-b-2 border-b-solid border-b-purple-400">
                 <div className="menu-card-left w-2/3">
                   <h2 className="menu-name opacity-90 mb-1.5 text-xl font-medium">{item.card?.info.name}</h2>
 
                   {item.card?.info.ratings?.aggregatedRating.rating ?
                     (
-                      <div className="menu-rating mt-1 flex gap-1 p-0.5 text-green-600">{item.card?.info.ratings.
+                      <div className="menu-rating mt-1 flex gap-1 p-0.5 text-purple-600">{item.card?.info.ratings.
                         aggregatedRating.rating}
                         <div className="star mt-1"><AiOutlineStar /></div>
 
@@ -101,7 +114,7 @@ const RestaurantMenu = () => {
                   <img className='s h-36 w-48 rounded-lg bg-cover bg-center hover:cursor-pointer hover:scale-90 overflow-hidden' src={CDN_URL + item.card?.info.imageId} alt="Menu Info" />
 
                   <div className='text-center -mt-7'>
-                    <div className='absolute'><button className=" p-1.5 w-28 h-10 relative left-9 rounded-xl bg-white text-xl font-bold text-green-600 shadow-lg shadow-gray-700 hover:bg-gray-200 transition-all duration-[.3s]">
+                    <div className='absolute'><button className=" p-1.5 w-28 h-10 relative left-9 rounded-xl bg-white scale-y-105 text-lg text-purple-800 shadow-lg shadow-purple-300 hover:scale-110 hover:text-white hover:bg-purple-900 transition-all duration-[.3s]">
                       ADD
                     </button></div>
 

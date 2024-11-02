@@ -11,45 +11,45 @@ const Header = () => {
     const { loggedInUser, setLoggedInUser } = useContext(UserContext); // Access the context
     const [btnNameReact, setBtnNameReact] = useState(loggedInUser === 'Default User' ? 'Login' : 'Logout');
     const onlineStatus = useOnlineStatus();
-    const navigate = useNavigate(); // For navigation
+    const navigate = useNavigate(); 
 
     const handleLoginLogout = () => {
         if (btnNameReact === 'Login') {
             const fetchedUserName = 'Fetched User'; // Replace with actual logic to fetch the user name
-            setLoggedInUser(fetchedUserName); // Update the context with the logged-in user's name
-            setBtnNameReact('Logout'); // Update button name to Logout
-            navigate('/form'); // Redirect to the form
+            setLoggedInUser(fetchedUserName); 
+            setBtnNameReact('Logout'); 
+            navigate('/form'); 
         } else {
-            setLoggedInUser('Default User'); // Reset to default user on logout
-            setBtnNameReact('Login'); // Update button name to Login
+            setLoggedInUser(''); 
+            setBtnNameReact('Login');
         }
     };
 
     return (
-        <div className="flex h-28 justify-between bg-white shadow-md shadow-purple-300 w-full">
+        <div className="flex h-24 justify-between bg-white shadow-md shadow-purple-300 w-full">
             <div>
                 <Link to="/">
-                    <img className="w-32 h-28 cursor-pointer" src={LOGO_URL} alt="Logo" />
+                    <img className="w-32 h-24 cursor-pointer" src={LOGO_URL} alt="Logo" />
                 </Link>
             </div>
             <div className="flex items-center">
                 <ul className="flex">
-                    <li className='p-2 m-2 cursor-pointer text-xl hover:font-semibold hover:text-purple-600 hover:scale-105'>
+                    <li className='p-2 m-2 cursor-pointer text-xl hover:text-purple-600 hover:scale-105'>
                         <Link to="/" className="links">Home</Link>
                     </li>
-                    <li className='p-2 m-2 cursor-pointer text-xl hover:font-semibold hover:text-purple-600  hover:scale-105'>
+                    <li className='p-2 m-2 cursor-pointer text-xl hover:text-purple-600  hover:scale-105'>
                         <Link to="/about" className="links">About Us</Link>
                     </li>
-                    <li className='p-2 m-2 cursor-pointer text-xl hover:font-semibold hover:text-purple-600 hover:scale-105'>
+                    <li className='p-2 m-2 cursor-pointer text-xl hover:text-purple-600 hover:scale-105'>
                         <Link to="/grocery" className="links">Grocery</Link>
                     </li>
-                    <li className='p-2 m-2 cursor-pointer text-3xl hover:font-semibold hover:text-purple-600 hover:scale-105'>
+                    <li className='p-2 m-2 cursor-pointer text-3xl hover:text-purple-600 hover:scale-105'>
                         <Link to="/contact" className="links"><FcBusinessContact /></Link>
                     </li>
-                    <li className='p-2 m-2 cursor-pointer text-3xl hover:font-semibold hover:text-purple-600 hover:scale-125'>
+                    <li className='p-2 m-2 cursor-pointer text-3xl hover:text-purple-600 hover:scale-125'>
                         <Link className="links"><GiShoppingCart /></Link>
                     </li>
-                    <button className='px-2 mx-2 w-24 text-black cursor-pointer text-xl border-2 bg-purple-300 hover:bg-purple-600 hover:font-semibold rounded-xl hover:scale-105 border-transparent hover:text-white'
+                    <button className='px-2 mx-2 w-24 cursor-pointer text-xl border-2 rounded-xl scale-105 bg-purple-500 border-transparent text-white hover:scale-110'
                         onClick={handleLoginLogout} // Use the handler
                     >
                         {btnNameReact}

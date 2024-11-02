@@ -19,15 +19,13 @@ const Body = () => {
 
     useEffect(() => {
         fetchData();
-    }, []); // called only once bcuz no dependency
+    }, []);
 
     const fetchData = async () => {
         try {
             const data = await fetch('https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5914766&lng=77.3455209&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
             const json = await data.json();
             console.log('Fetched data:', json);
-
-            // const restaurants = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
 
             const restaurants = json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants;
 
@@ -50,15 +48,15 @@ const Body = () => {
     return listOfRestaurants.length === 0 ? (
         <Shimmer />
     ) : (
-        <div className="body">
+        <div className="body h-auto w-full mt-1">
 
-            <div className='userWelcome flex justify-between align-middle h-12 mt-4 w-full bg-white'>
+            <div className='userWelcome flex justify-between align-middle h-10 mt-2 w-full bg-white'>
                 <div className='ml-14 mt-2.5 text-xl font-semibold scale-y-110 text-slate-700'>
                     Welcome! {loggedInUser}, what's on your mind?
                 </div>
             </div>
 
-            <div className="filter flex justify-between align-middle h-16 gap-2 mb-7 w-full pr-10 bg-white ">
+            <div className="filter flex justify-between align-middle h-16 gap-2 mb-3 w-full pr-10 bg-white ">
                 <div className="search flex justify-start p-2.5 w-3/4 ml-10">
                     <div className='flex border-2 border-solid border-purple-500 rounded-xl w-2/5 bg-gray-200'>
                         <input
@@ -82,7 +80,7 @@ const Body = () => {
 
                 </div>
                 <button
-                    className="filter-btn p-1 cursor-pointer border-2 rounded-2xl border-solid  w-64 m-2 border-transparent bg-purple-300 hover:bg-purple-600 hover:text-white text-black text-base hover:scale-110"
+                    className="filter-btn p-1 cursor-pointer border-2 rounded-2xl border-solid  w-72 m-2 scale-y-110 border-transparent bg-purple-500 text-white  text-lg scale-105 hover:scale-110"
                     onClick={() => {
                         const filteredList = listOfRestaurants.filter(
                             (res) => res.info.avgRating > 4
@@ -95,9 +93,8 @@ const Body = () => {
                 </button>
             </div>
 
-            <div className="res-container flex flex-wrap justify-around gap-2.5 mx-10">
+            <div className="res-container flex flex-wrap justify-around mx-5">
                 {filteredRestaurant.map((restaurant) => (
-                    // <RestaurantCard key={restaurant.info.id} resData={restaurant} />
                     <Link
                         style={{
                             textDecoration: 'none',

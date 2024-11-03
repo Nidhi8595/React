@@ -8,7 +8,13 @@ import { AiOutlineStar } from 'react-icons/ai';
 import { useContext, useState } from 'react';
 import UserContext from '../utils/UserContext';
 
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
+
 const RestaurantMenu = () => {
+  const dispatch = useDispatch();
+
+
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const { loggedInUser } = useContext(UserContext);
@@ -42,6 +48,11 @@ const RestaurantMenu = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedItem(null);
+  };
+
+  const handleAddItem = (item) => {
+    // dispatch an action
+    dispatch(addItem(item));
   };
 
   return (
@@ -121,7 +132,7 @@ const RestaurantMenu = () => {
                   {item.card?.info.ratings?.aggregatedRating.rating ? (
                     <div className="menu-rating mt-1 flex text-lg gap-1 p-0.5 text-purple-600">
                       {item.card?.info.ratings.aggregatedRating.rating}
-                      <div className="star mt-[4px]"><AiOutlineStar /></div>
+                      <div className="star mt-[5px]"><AiOutlineStar /></div>
                       <div className="count opacity-90 text-lg pl-1">({item.card?.info.ratings.aggregatedRating.ratingCount})</div>
                     </div>
                   ) : (
@@ -136,10 +147,10 @@ const RestaurantMenu = () => {
                     className='h-32 w-44 rounded-lg bg-cover bg-center hover:cursor-pointer hover:scale-90 overflow-hidden'
                     src={CDN_URL + item.card?.info.imageId}
                     alt="Menu Info"
-                    onClick={() => handleItemClick(item)} // Open modal on image click
+                    onClick={() => handleItemClick(item)} 
                   />
                   <div className='text-center -mt-7'>
-                    <button className="p-1.5 w-28 h-10 rounded-xl bg-white scale-y-105 text-lg text-purple-800 shadow-lg shadow-purple-300 hover:scale-110 hover:text-white hover:bg-purple-900 transition-all duration-[.3s]">
+                    <button className="p-1.5 w-28 h-10 rounded-xl bg-white scale-y-105 text-lg text-purple-800 shadow-lg shadow-purple-300 hover:scale-110 hover:text-white hover:bg-purple-900 transition-all duration-[.3s]" onClick={() => handleAddItem(item)}>
                       ADD
                     </button>
                   </div>
@@ -189,7 +200,7 @@ const RestaurantMenu = () => {
                 </h3>
               </div>
               <div className='text-center'>
-                <button className="mr-1 p-1.5 w-28 h-10 rounded-xl bg-white scale-y-105 text-lg text-purple-800 shadow-lg shadow-purple-300 hover:scale-125 hover:text-white hover:bg-purple-900 transition-all duration-[.1s]">
+                <button className="mr-1 p-1.5 w-28 h-10 rounded-xl bg-white scale-y-105 text-lg text-purple-800 shadow-lg shadow-purple-300 hover:scale-125 hover:text-white hover:bg-purple-900 transition-all duration-[.1s]" onClick={() => handleAddItem(selectedItem)}>
                   ADD
                 </button>
               </div>

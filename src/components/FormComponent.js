@@ -9,10 +9,9 @@ const FormComponent = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Update loggedInUser in the context with the submitted name
+       
         setLoggedInUser(name);
 
-        // After submission, navigate back to the home page
         navigate('/');
     };
 
@@ -24,7 +23,7 @@ const FormComponent = () => {
                 <input className='ml-1 w-3/4 pl-3 p-0.5 rounded-lg text-base text-purple-800'
                     type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)} // Update local state with input value
+                    onChange={(e) => setName(e.target.value)} // Updating local state with input value
                     required
                 />
                 </div>

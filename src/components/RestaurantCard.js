@@ -32,7 +32,7 @@ const RestaurantCard = (props) => {
             </div>
 
             <div className="lightColor text-wrap text-purple-800 ml-1.5 mt-0.5 text-[15px]/[18px]">{cuisines.join(', ')}</div>
-            {/* <h4>{costForTwo} </h4> */}
+            
             <div className="lightColor mt-0.5 text-black ml-1.5  text-base/[18px]">{areaName}</div>
         </div>
     );

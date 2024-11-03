@@ -12,27 +12,34 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import UserContext from './utils/UserContext';
 import FormComponent from './components/FormComponent';
 
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import Cart from './components/Cart';
+
+
 const Grocery = lazy(() => import('./components/Grocery'));
 
 const AppLayout = () => {
-    const [loggedInUser, setLoggedInUser] = useState('Default User'); // Set initial user
+    const [loggedInUser, setLoggedInUser] = useState('Default User'); 
 
     useEffect(() => {
-        // Simulate fetching user data (you can replace this with actual API calls)
+        
         const data = {
             name: '',
         };
-        setLoggedInUser(data.name); // Update user state based on API response
+        setLoggedInUser(data.name); 
     }, []);
 
     return (
-        <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
-            <div className='app'>
-                <Header />
-                <Outlet />
-                {/* <Footer /> */}
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+                <div className='app'>
+                    <Header />
+                    <Outlet />
+                    {/* <Footer /> */}
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 };
 
@@ -72,6 +79,10 @@ const appRouter = createBrowserRouter([
             {
                 path: '/form',
                 element: <FormComponent />,
+            },
+            {
+                path: '/cart',
+                element: <Cart />,
             },
         ],
         errorElement: <Error />,

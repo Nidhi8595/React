@@ -4,13 +4,11 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 // import Footer from './components/Footer';
 import About from './components/About';
-import Contact from './components/Contact';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
 
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import UserContext from './utils/UserContext';
-import FormComponent from './components/FormComponent';
 
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
@@ -60,10 +58,7 @@ const appRouter = createBrowserRouter([
                     </Suspense>
                 ),
             },
-            {
-                path: '/contact',
-                element: <Contact />,
-            },
+            
             {
                 path: '/grocery',
                 element: (
@@ -75,10 +70,6 @@ const appRouter = createBrowserRouter([
             {
                 path: '/restaurants/:resId',
                 element: <RestaurantMenu />,
-            },
-            {
-                path: '/form',
-                element: <FormComponent />,
             },
             {
                 path: '/cart',

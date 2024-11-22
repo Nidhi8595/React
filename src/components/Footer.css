@@ -1,0 +1,75 @@
+/* Footer Container */
+.footer {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  background: url('./footer.jpg') no-repeat center center;
+  background-size: cover; /* Ensure the doodle background covers the footer */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+  color: #333;
+}
+
+/* Overlay for contrast */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.61); /* Add a semi-transparent overlay */
+  z-index: 1;
+}
+
+/* Footer Content */
+.footer-content {
+  position: relative;
+  z-index: 2; /* Ensure content is above the overlay */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo Styling */
+.footer-logo .circular-logo {
+  width: 150px;
+  height: 150px;
+  margin-left: 50px;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+
+
+/* Tagline Section */
+.footer-illustration {
+  text-align: right;
+}
+
+.footer-tagline {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.footer-messages .message {
+  display: block;
+  font-size: 17px;
+  color: #8b1582;
+  margin: 5px 0;
+}
+
+/* Social Media Links */
+.footer-socials a {
+  margin: 0 5px;
+  color: #333;
+  font-size: 20px;
+}
+
+.footer-socials a:hover {
+  color: #ff5722;
+}

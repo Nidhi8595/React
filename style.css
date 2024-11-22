@@ -1,3 +1,5 @@
+@import "./node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,3 +95,5 @@ button:hover {
   align-items: center;
   z-index: 1000;
 }
+
+

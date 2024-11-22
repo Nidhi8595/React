@@ -2,8 +2,12 @@
   "name": "react",
   "version": "1.0.0",
   "main": "babel.config.js",
+  "homepage": "https://<Nidhi8595>.github.io/<React>"
+,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+  "build": "parcel build src/index.html --public-url ./"
   },
   "keywords": [],
   "author": "",

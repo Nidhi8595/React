@@ -8,7 +8,7 @@ import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
 import Cart from './components/Cart';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { HashRouter, Route, Routes } from 'react-router-dom';  // Ensure you import HashRouter and Routes
+import { HashRouter, Route, Routes } from 'react-router-dom';  
 import UserContext from './utils/UserContext';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';

@@ -6,21 +6,21 @@ import Footer from './components/Footer';
 import About from './components/About';
 import Error from './components/Error';
 import RestaurantMenu from './components/RestaurantMenu';
+import Cart from './components/Cart';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { HashRouter, Route, Routes } from 'react-router-dom';  // Use HashRouter and Routes
+import { HashRouter, Route, Routes } from 'react-router-dom';  // Ensure you import HashRouter and Routes
 import UserContext from './utils/UserContext';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
-import Cart from './components/Cart';
 
-// Lazy loading Grocery component
+// Lazy load Grocery component
 const Grocery = lazy(() => import('./components/Grocery'));
 
 const AppLayout = () => {
   const [loggedInUser, setLoggedInUser] = useState('Default User');
 
   useEffect(() => {
-    const data = { name: '' };
+    const data = { name: '' };  // Set logged-in user name
     setLoggedInUser(data.name);
   }, []);
 
@@ -36,7 +36,7 @@ const AppLayout = () => {
               <Route path="/grocery" element={<Suspense fallback={<div>Loading...</div>}><Grocery /></Suspense>} />
               <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="*" element={<Error />} /> {/* Fallback for invalid routes */}
+              <Route path="*" element={<Error />} />  {/* Catch-all for non-matching routes */}
             </Routes>
           </div>
           <Footer />
@@ -46,6 +46,7 @@ const AppLayout = () => {
   );
 };
 
+// Ensure the root element is wrapped in HashRouter
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HashRouter>

@@ -17,7 +17,7 @@ const Body = () => {
 
     console.log('Body rendered');
 
-    const API_URL = process.env.API;
+    const API_URL = 'https://thingproxy.freeboard.io/fetch/'+process.env.API;
     useEffect(() => {
         fetchData();
     }, []);

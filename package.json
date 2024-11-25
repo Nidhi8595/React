@@ -1,16 +1,13 @@
 {
-  "name": "react",
+  "name": "react-app-with-server",
   "version": "1.0.0",
-  "homepage": "https://Nidhi8595.github.io/React",
+  "main": "server.js",
+  "homepage": ".",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "node server.js",
     "build": "parcel build index.html --public-url ./",
-    "deploy": "gh-pages -d dist"
+    "vercel-build": "parcel build index.html --public-url ./"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.1",
     "@reduxjs/toolkit": "^2.3.0",

@@ -17,14 +17,14 @@ const Body = () => {
 
     console.log('Body rendered');
 
-    const API_URL = 'https://thingproxy.freeboard.io/fetch/'+process.env.API;
+    // const API_URL = process.env.API_URL_RES;
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
         try {
-            const data = await fetch(API_URL);
+            const data = await fetch(`${process.env.API_URL_RES}/api/restaurants`);
             const json = await data.json();
             console.log('Fetched data:', json);
 

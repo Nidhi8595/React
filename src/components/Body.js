@@ -17,14 +17,14 @@ const Body = () => {
 
     console.log('Body rendered');
 
-    // const API_URL = process.env.API_URL_RES;
+    const API_URL = "/api/restaurants";
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
         try {
-            const data = await fetch(`${process.env.API_URL_RES}/api/restaurants`);
+            const data = await fetch(API_URL);
             const json = await data.json();
             console.log('Fetched data:', json);
 

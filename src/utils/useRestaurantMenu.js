@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react';
 const useRestaurantMenu = (resId) => {
     const [resInfo, setResInfo] = useState(null);
 
+    const MENU_API="/api/menu";
+
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch(process.env.MENU_API + resId);
+        const data = await fetch(MENU_API + resId);
         const json = await data.json();
         setResInfo(json.data);
     };

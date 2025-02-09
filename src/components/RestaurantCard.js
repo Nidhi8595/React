@@ -12,9 +12,8 @@ const RestaurantCard = (props) => {
         avgRating,
         sla: { deliveryTime },
         areaName,
-        locality,
     } = resData?.info;
-
+    
     return (
         <div className="res-card rounded-2xl w-[270px] h-[320] overflow-hidden border-1 border-solid border-transparent hover:cursor-pointer hover:scale-90">
             <img className="res-logo w-full h-1/2 rounded-2xl overflow-hidden object-cover object-center" src={CDN_URL + cloudinaryImageId} alt="Biryani" />
@@ -33,13 +32,8 @@ const RestaurantCard = (props) => {
             </div>
 
             <div className="lightColor text-wrap text-purple-800 ml-1.5 mt-0.5 text-[15px]/[18px]">{cuisines.join(', ')}</div>
-
-            <div className="lightColor flex text-black  text-base/[18px]"><div className=" mt-0.5 ml-1.5 ">{areaName}</div>
-                {locality ?
-                    (<div className="text-sm ml-1">({locality})</div>)
-                    : (<div></div>)
-                }
-            </div>
+            
+            <div className="lightColor mt-0.5 text-black ml-1.5  text-base/[18px]">{areaName}</div>
         </div>
     );
 };

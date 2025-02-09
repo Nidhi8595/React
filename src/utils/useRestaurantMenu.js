@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { MENU_API } from '../utils/constants';
+import { MENU_API } from './constants.js';
 
 const useRestaurantMenu = (resId) => {
     const [resInfo, setResInfo] = useState(null);
-
-    const MENU_API="https://thingproxy.freeboard.io/fetch/api/menu";
 
     useEffect(() => {
         fetchData();

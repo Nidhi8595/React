@@ -17,14 +17,13 @@ const Body = () => {
 
     console.log('Body rendered');
 
-    const API_URL = "/api/restaurants";
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = async () => {
         try {
-            const data = await fetch(API_URL);
+            const data = await fetch('https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5914766&lng=77.3455209&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
             const json = await data.json();
             console.log('Fetched data:', json);
 

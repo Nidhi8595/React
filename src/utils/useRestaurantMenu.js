@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const useRestaurantMenu = (resId) => {
     const [resInfo, setResInfo] = useState(null);
 
-    const MENU_API="/api/menu";
+    const MENU_API="https://thingproxy.freeboard.io/fetch/api/menu";
 
     useEffect(() => {
         fetchData();

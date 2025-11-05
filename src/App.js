@@ -12,6 +12,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import UserContext from './utils/UserContext';
 import { Provider } from 'react-redux';
 import appStore from './utils/appStore';
+import FormComponent from './components/FormComponent'; 
 
 // Lazy load Grocery component
 const Grocery = lazy(() => import('./components/Grocery'));
@@ -36,6 +37,7 @@ const AppLayout = () => {
               <Route path="/grocery" element={<Suspense fallback={<div>Loading...</div>}><Grocery /></Suspense>} />
               <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/form" element={<FormComponent />} />
               <Route path="*" element={<Error />} />  {/* Catch-all for non-matching routes */}
             </Routes>
           </div>

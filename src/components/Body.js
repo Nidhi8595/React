@@ -32,19 +32,14 @@ const Body = () => {
         },
       });
 
-      //             const SWIGGY_URL = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5914766&lng=77.3455209&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
-
-      // const data = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(SWIGGY_URL)}`);
-
-      // const data = await fetch('https://api.allorigins.win/raw?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5914766&lng=77.3455209&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
       const json = await data.json();
       console.log("Fetched data:", json);
 
-      // const restaurants = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+      
 
       const cards = json?.data?.cards || [];
 
-      // Find the card that contains the restaurant list dynamically
+      
       const restaurantCard = cards.find(
         (card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );

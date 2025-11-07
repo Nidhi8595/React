@@ -8,37 +8,52 @@ const useRestaurantMenu = (resId) => {
   useEffect(() => {
     if (!resId) return;
 
-    const fetchMenu = async () => {
-      try {
-        const targetUrl = `${SWIGGY_MENU_API}&lat=${DEFAULT_LAT}&lng=${DEFAULT_LNG}&restaurantId=${resId}`;
+    // const fetchMenu = async () => {
+    //   try {
+    //     const targetUrl = `${SWIGGY_MENU_API}&lat=${DEFAULT_LAT}&lng=${DEFAULT_LNG}&restaurantId=${resId}`;
 
-        const proxyUrl = `${CORS_PROXY}${encodeURIComponent(targetUrl)}`;
+    //     const proxyUrl = `${CORS_PROXY}${encodeURIComponent(targetUrl)}`;
 
-        const response = await fetch(proxyUrl, {
-          headers: {
-            "x-cors-api-key": CORS_KEY,
-          },
-        });
+    //     const response = await fetch(proxyUrl, {
+    //       headers: {
+    //         "x-cors-api-key": CORS_KEY,
+    //       },
+    //     });
 
-        const text = await response.text();
+    //     const text = await response.text();
 
-        // Reject HTML responses
-        if (text.trim().startsWith("<")) {
-          throw new Error("Invalid response (HTML returned)");
-        }
+    //     // Reject HTML responses
+    //     if (text.trim().startsWith("<")) {
+    //       throw new Error("Invalid response (HTML returned)");
+    //     }
 
-        const data = JSON.parse(text);
+    //     const data = JSON.parse(text);
 
-        if (!data?.data) {
-          throw new Error("Swiggy returned empty data");
-        }
+    //     if (!data?.data) {
+    //       throw new Error("Swiggy returned empty data");
+    //     }
 
-        setMenu(data.data);
-      } catch (err) {
-        console.error("❌ Failed to fetch restaurant menu:", err);
-        setError(err.message);
-      }
-    };
+    //     setMenu(data.data);
+    //   } catch (err) {
+    //     console.error("❌ Failed to fetch restaurant menu:", err);
+    //     setError(err.message);
+    //   }
+    // };
+// useRestaurantMenu.js — simplified
+const fetchMenu = async () => {
+  try {
+    // call your render backend endpoint that you deployed
+    const response = await fetch(`${CORS_PROXY}/api/menu/${resId}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const json = await response.json();
+    if (!json?.data) throw new Error("No data returned");
+    setMenu(json.data);
+  } catch (err) {
+    console.error("❌ Failed to fetch restaurant menu:", err);
+    setError(err.message);
+  }
+};
+
 
     fetchMenu();
   }, [resId]);
